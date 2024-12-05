@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <div>
       <div
-        className="hero h-[400px] w-11/12 mx-auto"
+        className="hero h-[400px] w-11/12 mx-auto mb-32"
         style={{
           backgroundImage:
             'url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)',

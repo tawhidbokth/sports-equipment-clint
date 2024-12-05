@@ -7,6 +7,8 @@ import Home from './assets/Components/Home';
 import AllEquipment from './Pages/AllEquipment';
 import AddEquipment from './Pages/AddEquipment';
 import MyEquipment from './Pages/MyEquipment';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: 'myequipment',
         element: <MyEquipment></MyEquipment>,
+      },
+      {
+        path: 'login',
+        element: <Login></Login>,
+      },
+      {
+        path: 'register',
+        element: <Register></Register>,
       },
     ],
   },
