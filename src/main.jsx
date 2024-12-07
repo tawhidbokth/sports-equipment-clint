@@ -23,16 +23,18 @@ const router = createBrowserRouter([
       {
         path: 'allequipment',
         element: <AllEquipment></AllEquipment>,
+        loader: () => fetch('http://localhost:5000/equipment'),
       },
 
       {
-        path: 'addequipment',
+        path: 'equipment',
         element: <AddEquipment></AddEquipment>,
       },
 
       {
         path: 'myequipment',
         element: <MyEquipment></MyEquipment>,
+        loader: () => fetch('http://localhost:5000/equipment'),
       },
       {
         path: 'login',

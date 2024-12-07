@@ -1,9 +1,59 @@
 import React from 'react';
-
+import Swal from 'sweetalert2';
 const AddEquipment = () => {
+  const handleAddEquipment = e => {
+    e.preventDefault();
+    const form = e.target;
+    const image = form.image.value;
+    const itemName = form.itemName.value;
+    const categoryName = form.categoryName.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const customization = form.customization.value;
+    const processingTime = form.processingTime.value;
+    const stockStatus = form.stockStatus.value;
+    const description = form.description.value;
+
+    const addItemList = {
+      itemName,
+      image,
+      categoryName,
+      price,
+      rating,
+      customization,
+      processingTime,
+      stockStatus,
+      description,
+    };
+
+    fetch('http://localhost:5000/equipment', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(addItemList),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          console.log('successfully added');
+          Swal.fire({
+            title: 'Success!',
+            text: 'Coffee added successfully',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+          });
+          e.target.reset();
+        }
+      });
+  };
+
   return (
     <div>
-      <form className="max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-lg grid grid-cols-2 gap-5">
+      <form
+        onSubmit={handleAddEquipment}
+        className="max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-lg grid grid-cols-2 gap-5"
+      >
         <div className="mb-4">
           <label
             htmlFor="image"
@@ -12,7 +62,7 @@ const AddEquipment = () => {
             Image
           </label>
           <input
-            type="file"
+            type="url"
             id="image"
             name="image"
             className="mt-2 p-2 w-full border border-gray-300 rounded"
