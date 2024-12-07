@@ -22,7 +22,6 @@ const MyEquipment = () => {
         })
           .then(res => res.json())
           .then(data => {
-            // console.log(data);
             if (data.deletedCount) {
               Swal.fire({
                 title: 'Deleted!',
@@ -30,11 +29,10 @@ const MyEquipment = () => {
                 icon: 'success',
               });
 
-              // update the loaded coffee state
-              const remainingCoffees = loadedequ.filter(
+              const remainingequipment = loadedequ.filter(
                 coffee => coffee._id !== id
               );
-              setLoadedequ(remainingCoffees);
+              setLoadedequ(remainingequipment);
             }
           });
       }
