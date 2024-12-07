@@ -10,6 +10,7 @@ import MyEquipment from './Pages/MyEquipment';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import DetailPage from './Pages/DetailPage';
+import UpdateEquipment from './Pages/UpdateEquipment';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -41,6 +42,13 @@ const router = createBrowserRouter([
       {
         path: 'equipment/:id',
         element: <DetailPage> </DetailPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/equipment/${params.id}`),
+      },
+
+      {
+        path: '/myequipment/updateequipment/:id',
+        element: <UpdateEquipment></UpdateEquipment>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/equipment/${params.id}`),
       },

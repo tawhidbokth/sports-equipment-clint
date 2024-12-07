@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const MyEquipment = () => {
   const equipmentList = useLoaderData();
@@ -21,12 +21,11 @@ const MyEquipment = () => {
                 Price: ${item.price}
               </p>
               <div className="flex justify-between mt-4">
-                <button
-                  // onClick={() => handleUpdate(item.id)}
-                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                >
-                  Update
-                </button>
+                <Link to={`/myequipment/updateequipment/${item._id}`}>
+                  <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    Update
+                  </button>
+                </Link>
                 <button
                   // onClick={() => handleDelete(item.id)}
                   className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
