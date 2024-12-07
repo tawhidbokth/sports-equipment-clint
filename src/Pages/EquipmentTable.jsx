@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const EquipmentTable = ({ product }) => {
   const {
+    _id,
     itemName,
     image,
     categoryName,
@@ -49,9 +51,11 @@ const EquipmentTable = ({ product }) => {
                 {stockStatus}
               </td>
               <td class="px-6 py-4 text-sm text-gray-700 border-b">
-                <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
-                  View details
-                </button>
+                <Link to={`/equipment/${_id}`}>
+                  <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+                    View details
+                  </button>
+                </Link>
               </td>
             </tr>
           </tbody>

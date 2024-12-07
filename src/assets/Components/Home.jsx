@@ -1,8 +1,10 @@
+import { useLoaderData } from 'react-router-dom';
 import Category from './Category';
 import Banner from './Header/Banner';
 import Product from './Product';
 
 const Home = () => {
+  const equipment = useLoaderData();
   return (
     <div>
       <Banner></Banner>
@@ -13,7 +15,7 @@ const Home = () => {
         </div>
 
         <div className="w-full md:w-4/5">
-          <Product />
+          <Product equipment={equipment}></Product>
         </div>
       </div>
     </div>

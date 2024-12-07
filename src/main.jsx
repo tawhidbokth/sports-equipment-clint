@@ -9,6 +9,7 @@ import AddEquipment from './Pages/AddEquipment';
 import MyEquipment from './Pages/MyEquipment';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import DetailPage from './Pages/DetailPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/equipment'),
       },
 
       {
@@ -35,6 +37,12 @@ const router = createBrowserRouter([
         path: 'myequipment',
         element: <MyEquipment></MyEquipment>,
         loader: () => fetch('http://localhost:5000/equipment'),
+      },
+      {
+        path: 'equipment/:id',
+        element: <DetailPage> </DetailPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/equipment/${params.id}`),
       },
       {
         path: 'login',
