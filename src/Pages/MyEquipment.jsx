@@ -1,12 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyEquipment = () => {
   const equipmentList = useLoaderData();
+  const [loadedequ, setLoadedequ] = useState(equipmentList);
+
+  const handleDelete = id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/equipment/${id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            // console.log(data);
+            if (data.deletedCount) {
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your file has been deleted.',
+                icon: 'success',
+              });
+
+              // update the loaded coffee state
+              const remainingCoffees = loadedequ.filter(
+                coffee => coffee._id !== id
+              );
+              setLoadedequ(remainingCoffees);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <div className="max-w-7xl mx-auto grid grid-cols-3">
-        {equipmentList.map(item => (
+        {loadedequ.map(item => (
           <div
             key={item._id}
             className="card card-compact bg-base-100 w-96 shadow-xl"
@@ -27,7 +65,7 @@ const MyEquipment = () => {
                   </button>
                 </Link>
                 <button
-                  // onClick={() => handleDelete(item.id)}
+                  onClick={() => handleDelete(item._id)}
                   className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                 >
                   Delete
