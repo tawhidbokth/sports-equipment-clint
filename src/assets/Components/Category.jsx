@@ -5,10 +5,11 @@ const Category = ({ onCategoryClick, activeCategory }) => {
     'All',
     'Bat',
     'Helmet',
-    'Gym Equipment',
-    'Stram',
+    'Stump',
+    'Gloves',
     'Ball',
-    'Pad',
+    'Pads',
+    'Clothing',
   ];
 
   return (
