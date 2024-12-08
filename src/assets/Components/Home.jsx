@@ -3,6 +3,8 @@ import Category from './Category';
 import Banner from './Header/Banner';
 import Product from './Product';
 import React, { useState } from 'react';
+import ReviewSection from './ReviewSection';
+import FAQSection from './FaqSection';
 
 const Home = () => {
   const equipment = useLoaderData();
@@ -46,6 +48,11 @@ const Home = () => {
             </p>
           )}
         </div>
+      </div>
+
+      <div className="mt-36">
+        <ReviewSection></ReviewSection>
+        <FAQSection></FAQSection>
       </div>
     </div>
   );
