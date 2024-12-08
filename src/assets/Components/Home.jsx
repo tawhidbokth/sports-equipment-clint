@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
 
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row mx-auto w-[1400px]">
         <div className="w-full md:w-1/5">
           <Category />
         </div>
