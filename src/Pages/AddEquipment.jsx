@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from './Provider/Provider';
 const AddEquipment = () => {
+  const { user } = useContext(AuthContext);
   const handleAddEquipment = e => {
     e.preventDefault();
     const form = e.target;
@@ -208,7 +210,7 @@ const AddEquipment = () => {
             type="email"
             id="userEmail"
             name="userEmail"
-            value="user@example.com"
+            value={user.email}
             readOnly
             className="mt-2 p-2 w-full border border-gray-300 rounded bg-gray-100"
           />
@@ -225,7 +227,7 @@ const AddEquipment = () => {
             type="text"
             id="userName"
             name="userName"
-            value="John Doe"
+            value={user.displayName}
             readOnly
             className="mt-2 p-2 w-full border border-gray-300 rounded bg-gray-100"
           />
