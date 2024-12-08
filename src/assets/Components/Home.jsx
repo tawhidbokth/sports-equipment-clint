@@ -35,6 +35,9 @@ const Home = () => {
         </div>
 
         <div className="w-full md:w-4/5">
+          <h1 className="text-center text-4xl font-bold my-10">
+            Sports Equipment
+          </h1>
           {filteredEquipment.length > 0 ? (
             <Product equipment={filteredEquipment} />
           ) : (

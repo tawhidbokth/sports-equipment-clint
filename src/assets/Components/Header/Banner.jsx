@@ -1,30 +1,59 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
-const Banner = () => {
+const Slider = () => {
   return (
-    <div>
-      <div
-        className="hero h-[400px] w-11/12 mx-auto mb-32"
-        style={{
-          backgroundImage:
-            'url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)',
+    <div className="w-full max-w-[1400px] mx-auto py-10 ">
+      <Swiper
+        modules={[Autoplay, Navigation, Pagination]}
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
         }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        className="mySwiper"
       >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <button className="btn btn-primary">Get Started</button>
+        <SwiperSlide>
+          <div className="lg:h-[500px] flex justify-center items-center text-white text-2xl">
+            <img
+              className="w-full object-cover"
+              src="https://i.ibb.co.com/cthYRCL/Orange-Yellow-Green-Creative-Sportsfest-Banner-2.png"
+              alt=""
+            />
           </div>
-        </div>
-      </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="lg:h-[500px] flex justify-center items-center text-white text-2xl">
+            <img
+              className="w-full object-cover"
+              src="https://i.ibb.co.com/VL00Whq/Orange-Yellow-Green-Creative-Sportsfest-Banner-1.png"
+              alt=""
+            />
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="lg:h-[500px] flex justify-center items-center text-white text-2xl">
+            <img
+              className="w-full object-cover"
+              src="https://i.ibb.co.com/KqSycVW/Orange-Yellow-Green-Creative-Sportsfest-Banner.png"
+              alt=""
+            />
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };
 
-export default Banner;
+export default Slider;

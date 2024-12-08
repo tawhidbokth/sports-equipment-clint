@@ -68,6 +68,9 @@ const UpdateEquipment = () => {
 
   return (
     <div>
+      <h1 className="text-center text-4xl font-bold my-10">
+        Update Sports Equipment
+      </h1>
       <form
         onSubmit={updateAddEquipment}
         className="max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-lg grid grid-cols-2 gap-5"

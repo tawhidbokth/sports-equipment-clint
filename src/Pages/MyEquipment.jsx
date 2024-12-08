@@ -41,6 +41,9 @@ const MyEquipment = () => {
 
   return (
     <div>
+      <h1 className="text-center text-4xl font-bold my-10">
+        My Sports Equipment
+      </h1>
       <div className="max-w-7xl mx-auto grid grid-cols-3">
         {loadedequ.map(item => (
           <div

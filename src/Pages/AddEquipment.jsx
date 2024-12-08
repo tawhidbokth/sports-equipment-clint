@@ -52,6 +52,9 @@ const AddEquipment = () => {
 
   return (
     <div>
+      <h1 className="text-center text-4xl font-bold my-10">
+        Add Sports Equipment
+      </h1>
       <form
         onSubmit={handleAddEquipment}
         className="max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-lg grid grid-cols-2 gap-5"
