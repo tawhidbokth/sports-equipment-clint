@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import React, { createContext, useState } from 'react';
-import { auth } from '../firebase/firebase.init';
+import { auth } from '../../firebase.init';
 
 export const AuthContext = createContext(null);
 

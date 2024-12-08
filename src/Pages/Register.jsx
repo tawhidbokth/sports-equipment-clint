@@ -1,6 +1,39 @@
+import { useContext } from 'react';
+import { AuthContext } from './Provider/Provider';
+
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
   const handleRegister = e => {
     e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const image = form.image.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then(result => {
+        console.log('user created at fb', result.user);
+        const newUser = { name, email, image };
+        // save new user info to the database
+        fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.insertedId) {
+              console.log('user created in db');
+            }
+          });
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
   };
 
   return (
@@ -17,6 +50,7 @@ const Register = () => {
           <input
             type="text"
             id="name"
+            name="name"
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -32,6 +66,7 @@ const Register = () => {
           <input
             type="email"
             id="email"
+            name="email"
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -47,6 +82,7 @@ const Register = () => {
           <input
             type="url"
             id="photoURL"
+            name="image"
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -62,6 +98,7 @@ const Register = () => {
           <input
             type="password"
             id="password"
+            name="password"
             required
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />

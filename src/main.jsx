@@ -11,6 +11,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import DetailPage from './Pages/DetailPage';
 import UpdateEquipment from './Pages/UpdateEquipment';
+import AuthProvider from './Pages/Provider/Provider';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -65,7 +66,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+  <AuthProvider>
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  </AuthProvider>
 );
