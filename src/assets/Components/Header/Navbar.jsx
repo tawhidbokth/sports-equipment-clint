@@ -62,8 +62,7 @@ const Navbar = () => {
               src="https://i.ibb.co.com/2n7Q1kS/sports-logo-1090712-116.jpg"
               alt=""
             />
-
-            <p className="font-bold text-lg">Equipment</p>
+            <p className="font-bold text-lg hidden sm:block">Equipment</p>
           </div>
 
           <button
