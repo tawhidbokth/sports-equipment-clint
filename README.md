@@ -1,8 +1,31 @@
-# React + Vite
+# Sports Enquipment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Live Site URL
 
-Currently, two official plugins are available:
+🔗 [Visit MyEquipmentHub](https://sprots-enquipment.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## 🌟 Features
+
+- **Dynamic Product Display**: View an extensive list of sports equipment with
+  category, price, and stock details.
+- **Update/Delete Functionality**: Manage your listed equipment by updating
+  details or deleting items as needed.
+- **Secure Database Integration**: Data is securely managed using MongoDB, with
+  sensitive credentials protected in `.env`.
+- **Interactive Alerts**: Includes real-time alerts for confirmation and success
+  using `SweetAlert2`.
+- **Loading Spinner**: Ensures a smooth user experience with loading spinners
+  during data fetches and updates.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Additional Libraries**: SweetAlert2, dotenv, React Router
+
+---

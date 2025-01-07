@@ -1,9 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Product = ({ equipment }) => {
   return (
-    <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="lg:w-11/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
       {equipment.map(pro => (
         <div
           key={pro._id}
@@ -18,7 +17,7 @@ const Product = ({ equipment }) => {
             <div className="card-actions justify-center">
               <Link to={`/equipment/${pro._id}`}>
                 <button className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
-                  View details
+                  See more
                 </button>
               </Link>
             </div>

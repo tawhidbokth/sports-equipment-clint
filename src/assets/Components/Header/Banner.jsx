@@ -7,7 +7,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const Slider = () => {
   return (
-    <div className="w-full max-w-[1400px] mx-auto py-10 ">
+    <div className=" max-w-full mx-auto py-10 -mt-5 ">
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
         spaceBetween={30}
@@ -23,7 +23,7 @@ const Slider = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <div className="lg:h-[500px] flex justify-center items-center text-white text-2xl">
+          <div className="lg:h-[550px] flex justify-center items-center text-white text-2xl">
             <img
               className="w-full object-cover"
               src="https://i.ibb.co.com/cthYRCL/Orange-Yellow-Green-Creative-Sportsfest-Banner-2.png"
@@ -33,7 +33,7 @@ const Slider = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="lg:h-[500px] flex justify-center items-center text-white text-2xl">
+          <div className="lg:h-[550px] flex justify-center items-center text-white text-2xl">
             <img
               className="w-full object-cover"
               src="https://i.ibb.co.com/VL00Whq/Orange-Yellow-Green-Creative-Sportsfest-Banner-1.png"
@@ -43,7 +43,7 @@ const Slider = () => {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="lg:h-[500px] flex justify-center items-center text-white text-2xl">
+          <div className="lg:h-[550px] flex justify-center items-center text-white text-2xl">
             <img
               className="w-full object-cover"
               src="https://i.ibb.co.com/KqSycVW/Orange-Yellow-Green-Creative-Sportsfest-Banner.png"

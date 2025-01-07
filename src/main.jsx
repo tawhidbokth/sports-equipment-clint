@@ -12,46 +12,72 @@ import Register from './Pages/Register';
 import DetailPage from './Pages/DetailPage';
 import UpdateEquipment from './Pages/UpdateEquipment';
 import AuthProvider from './Pages/Provider/Provider';
+import PrivateRoute from './Pages/Provider/PrivateRoute';
+import ErrorPage from './Pages/ErrorPage';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
 
     children: [
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/equipment?limit=6'),
+        loader: () =>
+          fetch(
+            'https://sports-equipment-server-indol.vercel.app/equipment?limit=6'
+          ),
       },
 
       {
         path: 'allequipment',
         element: <AllEquipment></AllEquipment>,
-        loader: () => fetch('http://localhost:5000/equipment'),
       },
 
       {
         path: 'equipment',
-        element: <AddEquipment></AddEquipment>,
+        element: (
+          <PrivateRoute>
+            <AddEquipment></AddEquipment>,
+          </PrivateRoute>
+        ),
       },
 
       {
         path: 'myequipment',
-        element: <MyEquipment></MyEquipment>,
-        loader: () => fetch('http://localhost:5000/equipment'),
+        element: (
+          <PrivateRoute>
+            <MyEquipment></MyEquipment>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch('https://sports-equipment-server-indol.vercel.app/equipment'),
       },
       {
         path: 'equipment/:id',
-        element: <DetailPage> </DetailPage>,
+        element: (
+          <PrivateRoute>
+            <DetailPage> </DetailPage>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/equipment/${params.id}`),
+          fetch(
+            `https://sports-equipment-server-indol.vercel.app/equipment/${params.id}`
+          ),
       },
 
       {
         path: '/myequipment/updateequipment/:id',
-        element: <UpdateEquipment></UpdateEquipment>,
+        element: (
+          <PrivateRoute>
+            <UpdateEquipment></UpdateEquipment>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/equipment/${params.id}`),
+          fetch(
+            `https://sports-equipment-server-indol.vercel.app/equipment/${params.id}`
+          ),
       },
       {
         path: 'login',

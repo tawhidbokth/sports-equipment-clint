@@ -28,7 +28,7 @@ const AddEquipment = () => {
       description,
     };
 
-    fetch('http://localhost:5000/equipment', {
+    fetch('https://sports-equipment-server-indol.vercel.app/equipment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

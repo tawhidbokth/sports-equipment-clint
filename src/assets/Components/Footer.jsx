@@ -1,45 +1,56 @@
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-10">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-5">
-        {/* Website Information */}
         <div>
-          <h1 className="text-2xl font-bold mb-3">Your Website Name</h1>
+          <img
+            className="w-32 rounded-full"
+            src="https://i.ibb.co.com/2n7Q1kS/sports-logo-1090712-116.jpg"
+            alt=""
+          />
           <p>&copy; {new Date().getFullYear()} All Rights Reserved</p>
           <p>Contact: support@example.com</p>
         </div>
-
-        {/* Services Section */}
         <div>
-          <h6 className="text-lg font-semibold mb-3">Services</h6>
+          <h6 className="text-lg font-semibold mb-3">Quike Link</h6>
           <ul>
-            <li>
-              <a className="text-gray-300 hover:text-white" href="#">
-                Branding
-              </a>
-            </li>
-            <li>
-              <a className="text-gray-300 hover:text-white" href="#">
-                Design
-              </a>
-            </li>
-            <li>
-              <a className="text-gray-300 hover:text-white" href="#">
-                Marketing
-              </a>
-            </li>
-            <li>
-              <a className="text-gray-300 hover:text-white" href="#">
-                Advertisement
-              </a>
-            </li>
+            <Link to={'/'}>
+              <li>
+                <a className="text-gray-300 hover:text-white" href="#">
+                  Home
+                </a>
+              </li>
+            </Link>
+            <Link to={'/allequipment'}>
+              <li>
+                <a className="text-gray-300 hover:text-white" href="#">
+                  All Equipment
+                </a>
+              </li>
+            </Link>
+
+            <Link to={'/equipment'}>
+              <li>
+                <a className="text-gray-300 hover:text-white" href="#">
+                  Add Equipment
+                </a>
+              </li>
+            </Link>
+
+            <Link to={'/login'}>
+              <li>
+                <a className="text-gray-300 hover:text-white" href="#">
+                  Login
+                </a>
+              </li>
+            </Link>
           </ul>
         </div>
 
-        {/* Social Media Section */}
         <div>
           <h6 className="text-lg font-semibold mb-3">Follow Us</h6>
           <div className="flex space-x-4">

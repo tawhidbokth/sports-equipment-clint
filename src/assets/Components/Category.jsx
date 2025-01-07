@@ -13,7 +13,7 @@ const Category = ({ onCategoryClick, activeCategory }) => {
   ];
 
   return (
-    <div className="p-6 bg-gray-50">
+    <div className="p-6 w-80  bg-slate-100 lg:h-[1045px]">
       <h1 className="text-2xl font-bold text-center mb-6">Categories</h1>
 
       <div className="border border-orange-400 p-4 rounded-lg bg-white">

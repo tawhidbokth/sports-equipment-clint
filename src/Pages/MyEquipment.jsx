@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import LoadingSpinner from '../assets/Components/LoadingSpinner';
 
 const MyEquipment = () => {
   const equipmentList = useLoaderData();
-  const [loadedequ, setLoadedequ] = useState(equipmentList);
+  const [loadedequ, setLoadedequ] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadedequ(equipmentList);
+      setLoading(false);
+    }, 1000);
+  }, [equipmentList]);
 
   const handleDelete = id => {
     Swal.fire({
@@ -17,9 +26,12 @@ const MyEquipment = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/equipment/${id}`, {
-          method: 'DELETE',
-        })
+        fetch(
+          `https://sports-equipment-server-indol.vercel.app/equipment/${id}`,
+          {
+            method: 'DELETE',
+          }
+        )
           .then(res => res.json())
           .then(data => {
             if (data.deletedCount) {
@@ -30,7 +42,7 @@ const MyEquipment = () => {
               });
 
               const remainingequipment = loadedequ.filter(
-                coffee => coffee._id !== id
+                item => item._id !== id
               );
               setLoadedequ(remainingequipment);
             }
@@ -39,42 +51,74 @@ const MyEquipment = () => {
     });
   };
 
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
   return (
-    <div>
+    <div className="px-4 py-8">
       <h1 className="text-center text-4xl font-bold my-10">
         My Sports Equipment
       </h1>
-      <div className="max-w-7xl mx-auto grid grid-cols-3">
-        {loadedequ.map(item => (
-          <div
-            key={item._id}
-            className="card card-compact bg-base-100 w-96 shadow-xl"
-          >
-            <figure>
-              <img src={item.image} alt="Shoes" />
-            </figure>
-            <div className="card-body">
-              <h2 className="mt-2 text-lg font-bold">{item.itemName}</h2>
-              <p className="text-gray-600">{item.description}</p>
-              <p className="text-gray-800 font-semibold">
-                Price: ${item.price}
-              </p>
-              <div className="flex justify-between mt-4">
-                <Link to={`/myequipment/updateequipment/${item._id}`}>
-                  <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                    Update
-                  </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(item._id)}
-                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="overflow-x-auto max-w-7xl mx-auto">
+        <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase border-b">
+                Image
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase border-b">
+                Name
+              </th>
+              {/* <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase border-b">
+                Description
+              </th> */}
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase border-b">
+                Price
+              </th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-gray-600 uppercase border-b">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {loadedequ.map(item => (
+              <tr key={item._id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 text-sm text-gray-700 border-b">
+                  <img
+                    src={item.image}
+                    alt={item.itemName}
+                    className="w-16 h-16 object-cover rounded-md"
+                  />
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-700 border-b font-medium">
+                  {item.itemName}
+                </td>
+                {/* <td className="px-6 py-4 text-sm text-gray-700 border-b">
+                  {item.description}
+                </td> */}
+                <td className="px-6 py-4 text-sm text-gray-700 border-b font-semibold">
+                  ${item.price}
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-700 border-b">
+                  <div className="flex gap-2">
+                    <Link to={`/myequipment/updateequipment/${item._id}`}>
+                      <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        Update
+                      </button>
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
